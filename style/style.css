@@ -157,7 +157,7 @@ a{
 
 .shopping-cart{
   display: grid;
-  grid-template-columns: repeat(1, 400px);
+  grid-template-columns: repeat(1, 320px);
   justify-content: center;
   gap: 15px;
   margin-bottom: 30px;
@@ -254,22 +254,17 @@ a{
 }
 
 */
+/*
 @media (max-width: 1000px) {
   .shopping-cart {
     max-width: 400px;
   }
 }
+*/
 
 @media (max-width: 1000px) {
   .cart-item {
-    grid-template-columns: 100px 1fr;
-    row-gap: 10px;
-  }
-}
-
-@media (max-width: 1000px) {
-  .delivery {
-    grid-column: 1 / span 2;
+    grid-template-columns: 400px 1fr;
   }
 }
 
