@@ -8,7 +8,7 @@ export let shopItemsData = [
   }, 
   {
     id: 'kkkk',
-    name: 'Dumbbell',
+    name: 'Adjustable Dumbbell',
     priceCents: 4090,
     desc: 'Allows customizable weight training ',
     img: 'images/img-2.jpg'

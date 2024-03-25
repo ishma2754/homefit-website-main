@@ -238,6 +238,8 @@ a{
 .delivery-option-input{
   border: 0;
   height: 15px;
+  margin-left: 0px;
+  cursor: pointer;
 }
 
 .image img {
@@ -247,6 +249,34 @@ a{
 
 
 @media (max-width: 768px) {
+  .cart-item {
+    flex-direction: column;
+    width: auto; /* Adjust width for smaller screens */
+    max-width: 95%; /* Prevents the cart item from taking full width on very small screens */
+    margin: 0 auto; /* Center the cart item if you're using width less than 100% */
+  }
+
+  .cart-item .image img {
+    width: 100%; /* Make images responsive */
+    height: auto; /* Adjust height automatically */
+  }
+
+  .details, .delivery, .title-price-x, .buttons {
+    width: auto; /* Adjust width for nested elements */
+    text-align: center; /* Center the text for a better mobile view */
+    padding: 5px; /* Adjust padding for a cleaner look */
+  }
+
+  .buttons i {
+    font-size: 20px; /* Increase the size of plus and minus icons for better touchability */
+  }
+
+  .cart-item-price, .delivery-option-price, .delivery-date {
+    font-size: smaller; /* Adjust font size for smaller screens */
+  }
+}
+
+@media (min-width: 768px) {
   .cart-item {
     flex-direction: column;
     width: auto; /* Adjust width for smaller screens */
