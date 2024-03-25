@@ -57,7 +57,7 @@ a{
 
 .shop{
   display: grid;
-  grid-template-columns: repeat(4, 300px);
+  grid-template-columns: repeat(4, 230px);
   gap: 30px;
   justify-content: center;
   margin-bottom: 50px;
@@ -234,4 +234,17 @@ a{
 .delivery-option-input{
   border: 0;
   height: 15px;
+}
+
+
+@media (max-width: 1000px) {
+  .shopping-cart{
+    grid-template-columns: repeat(1, 320px);
+  }
+}
+
+@media (max-width: 500px) {
+  .shopping-cart{
+    grid-template-columns: repeat(1, 311px);
+  }
 }
