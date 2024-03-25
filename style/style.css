@@ -265,6 +265,7 @@ a{
 @media (max-width: 1000px) {
   .cart-item {
     grid-template-columns: 400px 1fr;
+    margin: 0 10px;
   }
 }
 
