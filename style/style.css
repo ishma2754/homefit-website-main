@@ -240,6 +240,11 @@ a{
   height: 15px;
 }
 
+.image img {
+  width: 100%; /* Make images responsive */
+  height: 100%;
+}
+
 
 @media (max-width: 768px) {
   .cart-item {
