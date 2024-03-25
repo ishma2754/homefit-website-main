@@ -267,8 +267,16 @@ a{
     padding: 5px; /* Adjust padding for a cleaner look */
   }
 
+  .buttons{
+   display: flex;
+   flex-direction: row; /* Stack buttons vertically */
+   justify-content: center; /* Center buttons vertically */
+   align-items: center;
+  }
+
   .buttons i {
-    font-size: 20px; /* Increase the size of plus and minus icons for better touchability */
+    font-size: 20px;
+    margin: 5px; /* Increase the size of plus and minus icons for better touchability */
   }
 
   .cart-item-price, .delivery-option-price, .delivery-date {
@@ -295,9 +303,17 @@ a{
     padding: 5px; /* Adjust padding for a cleaner look */
   }
 
-  .buttons i {
-    font-size: 20px; /* Increase the size of plus and minus icons for better touchability */
-  }
+  .buttons{
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    justify-content: center; /* Center buttons vertically */
+    align-items: center;
+   }
+ 
+   .buttons i {
+     font-size: 20px;
+     margin: 5px; /* Increase the size of plus and minus icons for better touchability */
+   }
 
   .cart-item-price, .delivery-option-price, .delivery-date {
     font-size: smaller; /* Adjust font size for smaller screens */
