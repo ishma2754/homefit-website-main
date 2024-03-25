@@ -255,14 +255,9 @@ a{
 
 */
 
-@media (max-width: 500px) {
-  .shopping-cart {
-    max-width: 400px;
-  }
-}
 
 
-@media (max-width: 500px) {
+@media (max-width: 1000px) {
   .cart-item {
     grid-template-columns: 320px 1fr;
   }
