@@ -256,13 +256,13 @@ a{
 */
 
 
-
+/*
 @media (max-width: 1000px) {
   .cart-item {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 400px;
   }
 }
-
+*/
 
 
 
