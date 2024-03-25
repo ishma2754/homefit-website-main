@@ -255,16 +255,16 @@ a{
 
 */
 
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
   .shopping-cart {
     max-width: 400px;
   }
 }
 
 
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
   .cart-item {
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 320px 1fr;
   }
 }
 
