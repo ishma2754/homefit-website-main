@@ -24,52 +24,63 @@ let generateCartItems = () => {
       let totalPrice = formatNumber(item * itemPrice); 
       return `
       <div class="cart-item">
-        <img width="60" src="${img}" alt="">
+        <div class="image">
+          <img width="60" height="137" src="${img}" alt="">
+        </div>
+        <div>
+          <div class="details">
+            <div class="title-price-x">
+              <h4 class="title-price">
+                <p>${name}</p>
+              </h4>
+              <i data-id=${id} class="bi bi-x-lg"></i>
+            </div>
+
+            <div>
+            <p class="cart-item-price">$${formatCurrency(priceCents)}</p>
+            </div>
+
+            
+
+            <div class="buttons">
+              <i data-id=${id} class="bi bi-dash-lg"></i>
+              <div id=${id} class="quantity">${item}</div>
+              <i data-id=${id} class="bi bi-plus-lg"></i>
+            </div>
+
+            <h3>$${totalPrice}</h3>
+          </div>
+        </div>  
+
         <div class="delivery">
-            <div class="delivery-date">
-              Delivery date: Thursday, September 12
-            </div>
-            <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
-            <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
-            <div>
-              <div class="delivery-option-date">
-                Thursday, March 28
-              </div>
-              <div class="delivery-option-price">
-              $4.99
-              </div>
-            </div>
+          <div class="delivery-date">
+            Delivery date: Thursday, September 12
           </div>
-
           <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
-            <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
-            <div>
-              <div class="delivery-option-date">
-                Thursday, March 28
-              </div>
-              <div class="delivery-option-price">
-              FREE
-              </div>
+          <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
+          <div>
+            <div class="delivery-option-date">
+              Thursday, March 28
+            </div>
+            <div class="delivery-option-price">
+            $4.99
             </div>
           </div>
         </div>
-        <div class="details">
-          <div class="title-price-x">
-            <h4 class="title-price">
-              <p>${name}</p>
-              <p class="cart-item-price">$${formatCurrency(priceCents)}</p>
-            </h4>
-            <i data-id=${id} class="bi bi-x-lg"></i>
-          </div>
 
-          <div class="buttons">
-            <i data-id=${id} class="bi bi-dash-lg"></i>
-            <div id=${id} class="quantity">${item}</div>
-            <i data-id=${id} class="bi bi-plus-lg"></i>
+      <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
+        <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
+        <div>
+          <div class="delivery-option-date">
+            Thursday, March 28
           </div>
-
-          <h3>$${totalPrice}</h3>
+          <div class="delivery-option-price">
+          FREE
+          </div>
         </div>
+      </div>
+    </div>
+
       </div>
       `;
    }).join(''));
