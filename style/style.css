@@ -161,7 +161,6 @@ a{
   justify-content: center;
   gap: 15px;
   margin-bottom: 30px;
-  
 }
 
 /**
@@ -262,7 +261,14 @@ a{
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
+  .cart-item {
+    grid-template-columns: 100px 1fr;
+
+  }
+}
+
+@media (max-width: 700px) {
   .delivery {
     grid-column: 1 / span 2;
   }
