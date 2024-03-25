@@ -254,13 +254,13 @@ a{
 }
 
 */
-/*
+
 @media (max-width: 1000px) {
   .shopping-cart {
     max-width: 400px;
   }
 }
-*/
+
 
 @media (max-width: 1000px) {
   .cart-item {
