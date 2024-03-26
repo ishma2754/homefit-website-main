@@ -1,8 +1,18 @@
+
 import { shopItemsData } from "./data.js";
 import formatCurrency from "./utils/money.js";
 let shop = document.getElementById('shop');
 
-let basket = JSON.parse(localStorage.getItem('data')) || []; 
+let basket = JSON.parse(localStorage.getItem('data')) || [{
+  id: 'jjjj',
+  item: 1,
+  deliveryOptionId: '1'
+}, {
+  id: 'kkkk',
+  item: 2,
+  deliveryOptionId: '2'
+}]; 
+
 
 let generateShop = () => {
   return (shop.innerHTML = shopItemsData.map((x) => {
@@ -32,7 +42,7 @@ generateShop();
 shop.addEventListener('click', (event) => {
   if (event.target.classList.contains('bi-plus-lg')) {
     let id = event.target.getAttribute('data-id');
-    increment({id});
+    increment({ id });
   }
  
   if (event.target.classList.contains('bi-dash-lg')) {
@@ -45,11 +55,13 @@ shop.addEventListener('click', (event) => {
 let increment = (id) =>{
   let selectedItem = id;
   let search = basket.find((x) => x.id === selectedItem.id);
-
-  if (search === undefined) {
+  
+  if (search === undefined ) {
+    
     basket.push({
       id: selectedItem.id,
-      item: 1
+      item: 1,
+      deliveryOptionId: '1'
     });
   } else{
     search.item += 1;
