@@ -24,33 +24,44 @@ let generateCartItems = () => {
       let totalPrice = formatNumber(item * itemPrice); 
       return `
       <div class="cart-item">
-        <div class="image">
-          <img width="60" height="137" src="${img}" alt="">
-        </div>
-        <div>
-          <div class="details">
-            <div class="title-price-x">
-              <h4 class="title-price">
-                <p>${name}</p>
-              </h4>
-              <i data-id=${id} class="bi bi-x-lg"></i>
+
+            <div class="image div1">
+                  <img width="60" height="137" src="${img}" alt="">
             </div>
 
-            <div>
-            <p class="cart-item-price">$${formatCurrency(priceCents)}</p>
-            </div>
 
-            
 
-            <div class="buttons">
-              <i data-id=${id} class="bi bi-dash-lg"></i>
-              <div id=${id} class="quantity">${item}</div>
-              <i data-id=${id} class="bi bi-plus-lg"></i>
-            </div>
+              
 
-            <h3>$${totalPrice}</h3>
-          </div>
-        </div>  
+
+            <div class="div2">
+                  <div class="details">
+                        <div class="title-price-x">
+                            <h4 class="title-price">
+                              <p>${name}</p>
+                            </h4>
+                            <i data-id=${id} class="bi bi-x-lg"></i>
+                        </div>
+
+                        <div>
+                            <p class="cart-item-price">$${formatCurrency(priceCents)}</p>
+                        </div>
+
+                    
+
+                        <div class="buttons">
+                            <i data-id=${id} class="bi bi-dash-lg"></i>
+                            <div id=${id} class="quantity">${item}</div>
+                            <i data-id=${id} class="bi bi-plus-lg"></i>
+                        </div>
+
+                        <h3>$${totalPrice}</h3>
+                  </div>
+            </div>  
+
+
+
+
 
         <div class="delivery">
           <div class="delivery-date">
