@@ -63,34 +63,44 @@ let generateCartItems = () => {
 
 
 
-        <div class="delivery">
-          <div class="delivery-date">
-            Delivery date: Thursday, September 12
-          </div>
-          <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
-          <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
-          <div>
-            <div class="delivery-option-date">
-              Thursday, March 28
-            </div>
-            <div class="delivery-option-price">
-            $4.99
-            </div>
-          </div>
-        </div>
+            <div class="delivery div3">
 
-      <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
-        <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
-        <div>
-          <div class="delivery-option-date">
-            Thursday, March 28
-          </div>
-          <div class="delivery-option-price">
-          FREE
-          </div>
-        </div>
-      </div>
-    </div>
+                  <div class="delivery-date">
+                     Delivery date: Thursday, September 12
+                  </div>
+                          
+                  <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
+
+                        <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
+                 
+                        <div>
+                            <div class="delivery-option-date">
+                                Thursday, March 28
+                            </div>
+
+                            <div class="delivery-option-price">
+                                $4.99
+                            </div>
+                        </div>
+                  </div>
+                  
+
+                  <div class="delivery-option js-delivery-option" data-product-id="e43638ce-6aa0-4b85-b27f-e1d07eb678c6" data-delivery-option-id="2">
+
+                        <input type="radio" class="delivery-option-input" name="delivery-option-e43638ce-6aa0-4b85-b27f-e1d07eb678c6">
+
+                        <div>
+                            <div class="delivery-option-date">
+                                Thursday, March 28
+                            </div>
+
+                            <div class="delivery-option-price">
+                                FREE
+                            </div>
+
+                        </div>
+                  </div>
+            </div>
 
       </div>
       `;
