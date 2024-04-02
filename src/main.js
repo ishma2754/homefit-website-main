@@ -1,23 +1,22 @@
 
 import { shopItemsData } from "./data.js";
 import formatCurrency from "./utils/money.js";
+
+
+
+
 let shop = document.getElementById('shop');
 
-let basket = JSON.parse(localStorage.getItem('data')) || [{
-  id: 'jjjj',
-  item: 1,
-  deliveryOptionId: '1'
-}, {
-  id: 'kkkk',
-  item: 2,
-  deliveryOptionId: '2'
-}]; 
+let basket = JSON.parse(localStorage.getItem('data')) || []; 
 
 
 let generateShop = () => {
   return (shop.innerHTML = shopItemsData.map((x) => {
-    let {id, name, priceCents, desc, img} = x;
-    let search = basket.find((x) => x.id === id) || [];//for local storage
+    let {id, name, priceCents, desc, img, deliveryOptionId} = x;
+    let search = basket.find((x) => x.id === id) || [];
+
+    
+
     return `
       <div id=product-id-${id} class="item">
         <img width="220" src=${img} alt="">
@@ -27,11 +26,12 @@ let generateShop = () => {
           <div class="price-quantity">
             <h2>$ ${formatCurrency(priceCents)}</h2>
             <div class="buttons">
-              <i data-id=${id}  class="bi bi-dash-lg"></i>
+              <i data-id=${id} data-deliveryOptionId=${deliveryOptionId}  class="bi bi-dash-lg"></i>
               <div id=${id} class="quantity">${search.item === undefined ? 0: search.item}</div>
-              <i data-id=${id} class="bi bi-plus-lg"></i>
+              <i data-id=${id} data-deliveryOptionId=${deliveryOptionId} class="bi bi-plus-lg"></i>
             </div>
           </div>
+
         </div>
       </div>
     `
@@ -42,39 +42,43 @@ generateShop();
 shop.addEventListener('click', (event) => {
   if (event.target.classList.contains('bi-plus-lg')) {
     let id = event.target.getAttribute('data-id');
-    increment({ id });
+    let deliveryOptionId = event.target.getAttribute('data-deliveryOptionId');
+    increment(id, deliveryOptionId);
   }
  
   if (event.target.classList.contains('bi-dash-lg')) {
     let id = event.target.getAttribute('data-id');
-    decrement({id});
+    let deliveryOptionId = event.target.getAttribute('data-deliveryOptionId'); 
+    decrement(id, deliveryOptionId);
   }
 });
 
 
-let increment = (id) =>{
+let increment = (id, deliveryOptionId) =>{
   let selectedItem = id;
-  let search = basket.find((x) => x.id === selectedItem.id);
+  let search = basket.find((x) => x.id === selectedItem );
+
   
   if (search === undefined ) {
     
     basket.push({
-      id: selectedItem.id,
+      id: selectedItem,
       item: 1,
-      deliveryOptionId: '1'
+      deliveryOptionId: deliveryOptionId
+
     });
   } else{
     search.item += 1;
   }
 
 
-  update(selectedItem.id);
+  update(selectedItem);
   localStorage.setItem('data', JSON.stringify(basket));
 };
 
-let decrement = (id) =>{
+let decrement = (id, deliveryOptionId) =>{
   let selectedItem = id;
-  let search = basket.find((x) => x.id === selectedItem.id);
+  let search = basket.find((x) => x.id === selectedItem);
 
   if (search === undefined) return;
   else if (search.item === 0) return;
@@ -82,13 +86,13 @@ let decrement = (id) =>{
     search.item -= 1;
   }
 
-  update(selectedItem.id);
+  update(selectedItem);
   basket = basket.filter((x) => x.item !== 0);
  
   localStorage.setItem('data', JSON.stringify(basket));
 };
 
-let update = (id) =>{
+let update = (id, deliveryOptionId) =>{
   let search = basket.find((x) => x.id === id);
   document.getElementById(id).innerHTML =  search.item;
   calculation();

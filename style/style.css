@@ -191,27 +191,12 @@ a{
   font-weight: bold;
 }
 
-.delivery-option {
-  display: grid;
-  grid-template-columns: 24px 1fr;
-  cursor: pointer;
+span{
+  color: black;
 }
 
-.delivery-option-input {
-  margin-left: 0px;
-  cursor: pointer;
-}
-
-.delivery-option-date {
-  color: rgb(0, 118, 0);
-  font-weight: 500;
-  margin-bottom: 3px;
-  font-size: 13px;
-}
-
-.delivery-option-price {
-  color: rgb(120, 120, 120);
-  font-size: 13px;
+span2{
+  color: red;
 }
 
 .title-price-x{

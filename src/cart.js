@@ -15,16 +15,8 @@ let label = document.getElementById('label');
 
 let shoppingCart = document.getElementById('shopping-cart');
 
-let basket = //JSON.parse(localStorage.getItem("data")) || //
-[{
-  id: 'jjjj',
-  item: 1,
-  deliveryOptionId: '1'
-}, {
-  id: 'kkkk',
-  item: 2,
-  deliveryOptionId: '2'
-}];
+let basket = JSON.parse(localStorage.getItem('data')) ||  [];
+
 
 
 
@@ -43,7 +35,7 @@ let generateCartItems = () => {
    return (shoppingCart.innerHTML = basket.map((x) => {
       let {id, item, deliveryOptionId} = x;
       let search = shopItemsData.find((y) => y.id === id) || [];
-      let {img, name, priceCents} = search;
+      let {img, name, priceCents, priceCentsDelivery} = search;
       let itemPrice = formatCurrency(priceCents); 
       let totalPrice = formatNumber(item * itemPrice); 
 
@@ -64,7 +56,16 @@ let generateCartItems = () => {
       const dateString = deliveryDate.format(
         'dddd, MMMM D'
       );
+
+      const priceString = deliveryOption.priceCentsDelivery 
+      === 0
+      ? 'FREE'
+      : `$${formatCurrency(deliveryOption.priceCentsDelivery)}`;
+
       
+    
+
+
       return `
       <div class="cart-item">
 
@@ -102,19 +103,11 @@ let generateCartItems = () => {
                   </div>
             </div>  
 
-
-
-
-
             <div class="delivery div3">
 
-                  <div class="delivery-date">
-                     Delivery Date: ${dateString}
+                  <div class="delivery-date" data-id=${id}>
+                     <span>Delivery Date:</span> ${dateString} <span2>${priceString}</span2>- Shipping
                   </div>
-                          
-                 ${deliveryOptionsHTML(id, deliveryOptionId)}
-
-
                   
             </div>
 
@@ -132,52 +125,6 @@ let generateCartItems = () => {
  }
 };
 
-
-function deliveryOptionsHTML(id, deliveryOptionId){
-    let html = '';
-    
-    deliveryOptions.forEach((deliveryOption) => {
-      const today = dayjs();
-      const deliveryDate = today.add(
-        deliveryOption.deliveryDays, 
-        'days'
-      );
-
-      const dateString = deliveryDate.format(
-        'dddd, MMMM D'
-      );
-
-      const priceString = deliveryOption.priceCents 
-      === 0
-      ? 'FREE'
-      : `$${formatCurrency(deliveryOption.priceCents)} -`;
-
-     const isChecked = deliveryOption.id === deliveryOptionId;
-     console.log(`Delivery Option Id: ${deliveryOption.id}, Basket Delivery Option Id: ${deliveryOptionId}, isChecked: ${isChecked}`);
-      html += `
-      <div class="delivery-option">
-
-          <input type="radio" 
-          ${isChecked ? 'checked' : ''}
-           class="delivery-option-input" name="delivery-option-${id}
-            "
-           >
-    
-          <div>
-              <div class="delivery-option-date">
-                  ${dateString}
-              </div>
-
-              <div class="delivery-option-price">
-                  ${priceString}
-              </div>
-          </div>
-
-      </div>
-      `
-    });
-    return html;
-};
 
 
 
@@ -283,8 +230,18 @@ let TotalAmount = () => {
       return item * (search.priceCents / 100);
     })
       .reduce((x, y) => x + y, 0 );
+
+      let shippingCharges = basket.map((x) => {
+        let { item, id, deliveryOptionId } = x;
+        let search = deliveryOptions.find((y) => y.id === deliveryOptionId) || {};
+        return  search.priceCentsDelivery / 100;
+      }).reduce((x, y) => x + y, 0 );
+
+      let totalAmount = amount + shippingCharges;
+
     label.innerHTML = `
-    <h2>Total Bill : $ ${formatNumber(amount)}</h2>
+    <h2>Total Bill : $ ${formatNumber(totalAmount)}</h2>
+    <h3>Shipping Charges : $${formatNumber(shippingCharges)}</h3>
     <button class="checkout">Checkout</button>
     <button  class="removeAll">Clear Cart</button>
     `;
