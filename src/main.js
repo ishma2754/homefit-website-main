@@ -1,5 +1,5 @@
 
-import { shopItemsData } from "./data.js";
+import { shopItemsData } from "./data/data.js";
 import formatCurrency from "./utils/money.js";
 
 

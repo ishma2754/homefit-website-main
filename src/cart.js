@@ -1,8 +1,8 @@
 
-import { shopItemsData } from "./data.js";
+import { shopItemsData } from "./data/data.js";
 import {formatCurrency, formatNumber } from "./utils/money.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
-import { deliveryOptions } from "./deliveryOptions.js";
+import { deliveryOptions } from "./data/deliveryOptions.js";
 
 
 const today = dayjs();
@@ -240,7 +240,7 @@ let TotalAmount = () => {
       let totalAmount = amount + shippingCharges;
 
     label.innerHTML = `
-    <h2>Total Bill : $ ${formatNumber(totalAmount)}</h2>
+    <h2>Total Bill : $${formatNumber(totalAmount)}</h2>
     <h3>Shipping Charges : $${formatNumber(shippingCharges)}</h3>
     <button class="checkout">Checkout</button>
     <button  class="removeAll">Clear Cart</button>
