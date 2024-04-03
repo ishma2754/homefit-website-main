@@ -130,22 +130,22 @@ let generateCartItems = () => {
 
 generateCartItems();
 
-console.log(basket);
+
 
 shoppingCart.addEventListener('click', (event) => {
   if (event.target.classList.contains('bi-plus-lg')) {
     let id = event.target.getAttribute('data-id');
-    increment({id});
+    increment(id);
   }
  
   if (event.target.classList.contains('bi-dash-lg')) {
     let id = event.target.getAttribute('data-id');
-    decrement({id});
+    decrement(id);
   }
 
   if (event.target.classList.contains('bi-x-lg')) {
     let id = event.target.getAttribute('data-id');
-    removeItem({id});
+    removeItem(id);
   }
 });
 
@@ -158,11 +158,11 @@ document.addEventListener('click', (event) => {
 
 let increment = (id) => {
   let selectedItem = id;
-  let search = basket.find((x) => x.id === selectedItem.id);
+  let search = basket.find((x) => x.id === selectedItem);
 
   if (search === undefined) {
     basket.push({
-      id: selectedItem.id,
+      id: selectedItem,
       item: 1,
     });
   } else {
@@ -170,19 +170,19 @@ let increment = (id) => {
   }
 
   generateCartItems();
-  update(selectedItem.id);
+  update(selectedItem);
   localStorage.setItem("data", JSON.stringify(basket));
 };
 let decrement = (id) => {
   let selectedItem = id;
-  let search = basket.find((x) => x.id === selectedItem.id);
+  let search = basket.find((x) => x.id === selectedItem);
 
   if (search === undefined) return;
   else if (search.item === 0) return;
   else {
     search.item -= 1;
   }
-  update(selectedItem.id);
+  update(selectedItem);
   basket = basket.filter((x) => x.item !== 0);
   generateCartItems();//re render our cart
   localStorage.setItem("data", JSON.stringify(basket));
@@ -206,7 +206,7 @@ let update = (id) => {
 
 let removeItem = (id) => {
   let selectedItem = id;
-  basket = basket.filter((x) => x.id !== selectedItem.id);
+  basket = basket.filter((x) => x.id !== selectedItem);
   generateCartItems();
   TotalAmount();
   calculation();
